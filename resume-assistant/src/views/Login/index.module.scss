@@ -1,0 +1,86 @@
+.login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 942px;
+}
+
+.loginText {
+    position: absolute;
+    width: 80px;
+    height: 56px;
+    top: 198px;
+
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 56px;
+    /* identical to box height */
+
+    color: #212426;
+}
+
+.loginBox {
+    position: absolute;
+    left: 35.46%;
+    right: 35.46%;
+    top: 32.2%;
+    bottom: 24.11%;
+    // width: 5200px;
+    // height: 515px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    margin-top: 29px;
+}
+
+.scanCode {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.code {
+
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    left: 840px;
+    top: 373px;
+
+    background: #F7F7F7;
+}
+
+.codeText {
+    position: absolute;
+    width: 320px;
+    height: 28px;
+    // left: 800px;
+    // top: 633px;
+
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    /* identical to box height */
+
+    color: #FF8000;
+}
+
+.agreeText {
+    position: absolute;
+    width: 396px;
+    height: 25px;
+    // left: 762px;
+    // top: 741px;
+
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+
+    color: #6E7780;
+}
