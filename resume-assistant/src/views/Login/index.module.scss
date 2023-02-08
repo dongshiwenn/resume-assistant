@@ -23,15 +23,14 @@
 
 .loginBox {
     position: absolute;
-    left: 35.46%;
-    right: 35.46%;
     top: 32.2%;
     bottom: 24.11%;
-    // width: 5200px;
-    // height: 515px;
+    min-width: 400px;
     background: #FFFFFF;
     border-radius: 20px;
     margin-top: 29px;
+    display: flex;
+    justify-content: center;
 }
 
 .scanCode {
@@ -44,25 +43,20 @@
 .code {
 
     position: absolute;
-    width: 240px;
-    height: 240px;
-    left: 840px;
-    top: 373px;
+    width: 180px;
+    height: 180px;
 
     background: #F7F7F7;
+    margin-top: 20px;
 }
 
 .codeText {
     position: absolute;
-    width: 320px;
-    height: 28px;
-    // left: 800px;
-    // top: 633px;
-
+    margin-top: 220px;
     font-family: 'PingFang SC';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
     /* identical to box height */
 
@@ -71,11 +65,8 @@
 
 .agreeText {
     position: absolute;
-    width: 396px;
-    height: 25px;
     // left: 762px;
-    // top: 741px;
-
+    margin-top: 290px;
     font-family: 'PingFang SC';
     font-style: normal;
     font-weight: 400;
