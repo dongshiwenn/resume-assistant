@@ -29,7 +29,7 @@ const Home: React.FC = () => {
   // 获取导航菜单
   const items: MenuItem[] = [
     getItem('首页', '/login'),
-    getItem('简历填写', '2'),
+    getItem('简历填写', '/detail'),
     getItem('使用教程', '3'),
     getItem('关于', '4'),
   ];
