@@ -5,6 +5,9 @@ import { CaretRightOutlined } from '@ant-design/icons';
 
 import styles from './index.module.scss';
 
+import BasicInfo from './basicInfo';
+import Education from "./education";
+import School from "./school";
 
 const FillDetails = () => {
 
@@ -24,25 +27,26 @@ const FillDetails = () => {
     };
 
     const panelArray = [
-        '基本资料',
-        '教育情况'
+        {name: '基本资料', element: <BasicInfo/>},
+        {name: '教育经历', element: <Education/>},
+        {name: '校内经历', element: <School/>}
     ];
     return (
         <div className={styles.detailBox}>
             <TextProgress  percent={30} text='完整度' strokeColor="#FF8000"/>
             <Collapse
                 bordered={false}
-                defaultActiveKey={['1']}
+                defaultActiveKey={['0']}
                 expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
                 className={styles.collapseBox}
             >
                 {panelArray.map((item, index) => {return (
                     <Panel
-                        header={item}
+                        header={item.name}
                         key={index}
                         style={panelStyle}
                     >
-                        {React.cloneElement(<p>分别的子表单组件</p>)}
+                        {React.cloneElement(item.element)}
                     </Panel>
                 )})}
 

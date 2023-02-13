@@ -3,6 +3,8 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import type { MenuProps, MenuTheme } from 'antd/es/menu';
 import { Outlet, useNavigate } from 'react-router-dom';
 
+import styles from './home.module.scss';
+
 type MenuItem = Required<MenuProps>['items'][number];
 
 
@@ -54,7 +56,7 @@ const Home: React.FC = () => {
         />
       </Header>
       <Content style={{ padding: '0 50px'}} className="site-layout-content">
-        <div className="site-layout-content">
+        <div className={styles.layoutContent}>
             <Outlet />
         </div>
       </Content>
