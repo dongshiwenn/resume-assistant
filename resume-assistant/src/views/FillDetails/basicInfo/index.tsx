@@ -8,12 +8,19 @@ import {
 
 const { Option } = Select;
 
+import Footer from '../footer';
 import styles from './index.module.scss';
 
+const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+};
+
 const BasicInfo = () => {
+
     return(
         <>
         <Form
+          name='basicInfoForm'
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           layout="horizontal"
@@ -54,6 +61,9 @@ const BasicInfo = () => {
             </Form.Item>
             <Form.Item label="出生日期" name='birthDate'>
                 <DatePicker placeholder='请选择'/>
+            </Form.Item>
+            <Form.Item {...tailLayout}>
+                <Footer />
             </Form.Item>
         </Form>
       </>
