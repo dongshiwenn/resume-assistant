@@ -1,6 +1,6 @@
 import React from "react";
 import TextProgress from "@/components/textProgress";
-import { Collapse, theme, Form } from 'antd';
+import { Collapse, theme, Form, Button } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 
 import styles from './index.module.scss';
@@ -56,7 +56,7 @@ const FillDetails = () => {
                       }}>
                 <Collapse
                     bordered={false}
-                    defaultActiveKey={['0']}
+                    // defaultActiveKey={['0']}
                     expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
                     className={styles.collapseBox}
                 >
@@ -66,11 +66,13 @@ const FillDetails = () => {
                             key={index}
                             style={panelStyle}
                         >
-                            {React.cloneElement(item.element)}
+                            {item.element}
                         </Panel>
                     )})}
-
                 </Collapse>
+                {/* <div className={styles.addButtonDiv}>
+                    <Button htmlType="button" className={styles.addButton}>添加自定义模块</Button>
+                </div> */}
             </Form.Provider>
         </div>
     )

@@ -1,10 +1,10 @@
 import { useRoutes, Link } from 'react-router-dom';
-import router from './router'
+import router from './router';
 
 function App() {
   const outlet = useRoutes(router);
   return (
-    <div className="App">
+    <div>
       {outlet}
     </div>
   )
