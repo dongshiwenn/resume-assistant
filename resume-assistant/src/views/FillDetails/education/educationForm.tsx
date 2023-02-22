@@ -4,17 +4,17 @@ import {
     Radio,
     Select,
     DatePicker,
+    Col,
   } from 'antd';
   
   const { Option } = Select;
   const { RangePicker } = DatePicker;
   
-  const EducationForm = (props: any) => {
+  const EducationForm = () => {
 
-        const { number } = props;
       return(
           <>
-                <Form.Item label="学历" name='education' >
+                <Form.Item label="学历" name='education'>
                     <Input />
                 </Form.Item>
                 <Form.Item label="是否是最高学历" name='ifHighestEdu'>

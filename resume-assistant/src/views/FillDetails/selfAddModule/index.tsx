@@ -1,31 +1,28 @@
 import {
     Form,
     Input,
-    Radio,
     Select,
     DatePicker,
   } from 'antd';
   
-  const { Option } = Select;
-  const { RangePicker } = DatePicker;
   
   import Footer from '../footer';
 
   import styles from '../index.module.scss';
 
-  const SelfAssessment = (props: any) => {
+  const SelfAddModule = (props: any) => {
 
-    const { initialValues } = props;
+    const { label, name, initialValues } = props;
 
       return(
           <>
           <Form
-            name='selfAssessment'
+            name={name}
             layout="horizontal"
             className={styles.form}
             initialValues={initialValues}
           >
-              <Form.Item label="自我描述" name='description'>
+              <Form.Item label={label} name={name}>
                   <Input />
               </Form.Item>
               <Form.Item className={styles.formFooter}>
@@ -35,4 +32,4 @@ import {
         </>
       )
   }
-  export default SelfAssessment;
+  export default SelfAddModule;

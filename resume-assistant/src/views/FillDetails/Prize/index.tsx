@@ -9,26 +9,32 @@ import {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
   
-  import styles from './index.module.scss';
-  
-  const Prize = () => {
+  import addModule from '../addModule';
+  import Footer from '../footer';
+  import PrizeForm from './prizeForm';
+
+  import styles from '../index.module.scss';
+
+  const Prize = (props: any) => {
+    const {initialValues} = props;
+
       return(
           <>
           <Form
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
+            name='prize'
             layout="horizontal"
-            style={{ maxWidth: 600 }}
+            className={styles.form}
+            initialValues={initialValues}
           >
-              <Form.Item label="奖项名称" name='prizeName'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="获奖时间" name='prizeTime'>
-                  <RangePicker />
-              </Form.Item>
-              <Form.Item label="奖项描述" name='prizeDescription'>
-                  <Input />
-              </Form.Item>
+            <Form.Item>
+                <PrizeForm />
+            </Form.Item>
+
+            {addModule('添加获奖情况', <PrizeForm />, 'addPrize')}
+
+            <Form.Item className={styles.formFooter}>
+                <Footer />
+            </Form.Item>
           </Form>
         </>
       )

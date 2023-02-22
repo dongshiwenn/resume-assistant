@@ -9,35 +9,33 @@ import {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
   
-  import styles from './index.module.scss';
-  
-  const Work = () => {
+  import addModule from '../addModule';
+  import WorkForm from './workForm';
+  import Footer from '../footer';
+
+  import styles from '../index.module.scss';
+
+
+  const Work = (props: any) => {
+    const {initialValues} = props;
+
       return(
           <>
           <Form
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
+            name='work'
             layout="horizontal"
-            style={{ maxWidth: 600 }}
+            className={styles.form}
+            initialValues={initialValues}
           >
-              <Form.Item label="公司" name='companyName'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="部门" name='department'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="职位" name='position'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="工作性质" name='jobCategory'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="工作时间" name='jobTime'>
-                  <RangePicker />
-              </Form.Item>
-              <Form.Item label="描述" name='workDescription'>
-                  <Input />
-              </Form.Item>
+            <Form.Item>
+                <WorkForm />
+            </Form.Item>
+
+            {addModule('添加工作（实习）经历', <WorkForm />, 'addWork')}
+
+            <Form.Item className={styles.formFooter}>
+                <Footer />
+            </Form.Item>
           </Form>
         </>
       )

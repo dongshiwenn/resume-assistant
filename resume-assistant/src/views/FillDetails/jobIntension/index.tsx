@@ -9,27 +9,25 @@ import {
   const { Option } = Select;
   
   import Footer from '../footer';
-  import styles from './index.module.scss';
-  
-  const tailLayout = {
-      wrapperCol: { offset: 8, span: 16 },
-  };
-  
-  const JobIntension = () => {
+
+  import styles from '../index.module.scss';
+
+  const JobIntension = (props: any) => {
+
+    const { initialValues } = props;
   
       return(
           <>
           <Form
-            name='basicInfoForm'
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
+            name='jobIntension'
             layout="horizontal"
-            style={{ maxWidth: 600 }}
+            className={styles.form}
+            initialValues={initialValues}
           >
               <Form.Item label="期望职位" name='expectedPosition'>
                   <Input />
               </Form.Item>
-              <Form.Item label="期望地点" name='expectedCity'>
+              <Form.Item label="期望城市" name='expectedCity'>
                   <Input />
               </Form.Item>
               <Form.Item label="是否接受调剂" name='ifAcceptAdjustment'>
@@ -38,9 +36,24 @@ import {
                   <Radio value="no"> 否 </Radio>
                   </Radio.Group>
               </Form.Item>
-              <Form.Item label="可面试城市" name='name'>
+              <Form.Item label="是否接受出差" name='ifAcceptBusinessTrip'>
+                  <Radio.Group defaultValue="yes">
+                  <Radio value="yes"> 是 </Radio>
+                  <Radio value="no"> 否 </Radio>
+                  </Radio.Group>
+              </Form.Item>
+              <Form.Item label="面试期望城市" name='expectedCityForInterview'>
                   <Input />
               </Form.Item>
+              <Form.Item label="笔试期望城市" name='expectedCityForWrittenExam'>
+                  <Input />
+              </Form.Item>
+              <Form.Item label="期望薪酬" name='expectedSalary'>
+                  <Input />
+              </Form.Item>
+              <Form.Item className={styles.formFooter}>
+                    <Footer />
+                </Form.Item>
           </Form>
         </>
       )

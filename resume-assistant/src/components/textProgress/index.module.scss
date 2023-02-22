@@ -1,17 +1,15 @@
 .progressBox {
-    width: 80%;
-    height: 8%;
     display: flex;
     align-items: center;
-    position: absolute;
-
     background: #FFFFFF;
     border-radius: 20px;
+    min-width: 200px;
 }
 
 .progressText {
-    position: absolute;
-    margin-left: 60px;
+    // width: 12%;
+    min-width: 60px;
+    margin-left: 20px;
     font-family: 'PingFang SC';
     font-style: normal;
     font-weight: 400;
@@ -19,11 +17,11 @@
     /* identical to box height */
 
     color: #212426;
+
 }
 
 .progress {
     border-radius: 20px;
-    margin-left: 140px;
     margin-top: 8px;
-    width: 80%;
+    padding: 0 20px;
 }

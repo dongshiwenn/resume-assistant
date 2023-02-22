@@ -9,41 +9,34 @@ import {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
   
-  import styles from './index.module.scss';
-  
-  const Language = () => {
+  import Footer from '../footer';
+  import LanguageForm from './languageForm';
+  import addModule from '../addModule';
+
+  import styles from '../index.module.scss';
+
+  const Language = (props: any) => {
+
+    const {initialValues} = props;
+
+    
       return(
           <>
           <Form
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
+            name='language'
             layout="horizontal"
-            style={{ maxWidth: 600 }}
+            className={styles.form}
+            initialValues={initialValues}
           >
-              <Form.Item label="语种名称" name='languageType'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="等级考试" name='levelExam'>
-                  <Input />
-              </Form.Item>
-              <Form.Item label="分数" name='score'>
-                  <Input />
-              </Form.Item>
-              <Form.Item
-                    label='口语水平'
-                    name='skillLevel'
-                    noStyle
-                    >
-                    <Select placeholder='请选择'>
-                        <Option value="motherLan">母语</Option>
-                        <Option value="fluency">流利</Option>
-                        <Option value="canInterview">可面试</Option>
-                        <Option value="simpleConversation">简单会话</Option>
-                    </Select>
+               <Form.Item>
+                    <LanguageForm />
                 </Form.Item>
-              <Form.Item label="其他能力证书" name='projectDescription'>
-                  <Input />
-              </Form.Item>
+
+                {addModule('添加教育经历', <LanguageForm />, 'addLanguage')}
+
+                <Form.Item className={styles.formFooter}>
+                    <Footer />
+                </Form.Item>
           </Form>
         </>
       )

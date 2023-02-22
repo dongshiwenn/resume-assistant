@@ -24,3 +24,19 @@ img {
     float: right;
     margin: 16px 0 16px 24px;
 }
+
+.ant-form-item-label > label{
+    width: 190px;
+    justify-content: flex-end;
+}
+
+// .ant-form-item {
+//     .css-dev-only-do-not-override-ixblex {
+//         width: 70%;
+//     }
+// }
+.ant-input {
+    .css-dev-only-do-not-override-ixblex {
+        width: 70%;
+    }
+}

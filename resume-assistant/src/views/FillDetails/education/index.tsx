@@ -16,22 +16,19 @@ import {
   import Footer from '../footer';
   import EducationForm from './educationForm';
   import addModule from '../addModule';
-  import styles from './index.module.scss';
+  import styles from '../index.module.scss';
   
-  const tailLayout = {
-      wrapperCol: { offset: 8, span: 16 },
-  };
-  
-  const Education = () => {
+  const Education = (props: any) => {
+
+    const {initialValues} = props;
 
       return(
           <>
           <Form
             name='education'
-            labelCol={{ span: 16 }}
-            wrapperCol={{ span: 16 }}
             layout="horizontal"
-            // style={{ display:'flex' }}
+            initialValues={initialValues}
+            className={styles.form}
           >
                 <Form.Item>
                     <EducationForm />
@@ -39,7 +36,7 @@ import {
 
                 {addModule('添加教育经历', <EducationForm />, 'addEducation')}
 
-                <Form.Item {...tailLayout}>
+                <Form.Item className={styles.formFooter}>
                     <Footer />
                 </Form.Item>
           </Form>

@@ -10,19 +10,17 @@
     import addModule from '../addModule';
     import Footer from '../footer';
 
-    const tailLayout = {
-        wrapperCol: { offset: 8, span: 16 },
-    };
+    import styles from '../index.module.scss';
     
-    const School = () => {
+    const School = (props: any) => {
+        const {initialValues} = props;
       return(
           <>
           <Form
             name='school'
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
             layout="horizontal"
-            // style={{ maxWidth: 600 }}
+            initialValues={initialValues}
+            className={styles.form}
           >
             <Form.Item>
                 <SchoolForm />
@@ -30,7 +28,7 @@
 
             {addModule('添加校园经历', <SchoolForm />, 'addSchool')}
 
-                <Form.Item {...tailLayout}>
+                <Form.Item className={styles.formFooter}>
                     <Footer />
                 </Form.Item>
 

@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TextProgress from "@/components/textProgress";
-import { Collapse, theme, Form, Button } from 'antd';
+import { Collapse, theme, Form, Button, Modal, Input } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 
 import styles from './index.module.scss';
-
+import axios from 'axios';
 import BasicInfo from './basicInfo';
 import Education from "./education";
 import School from "./school";
 import Work from "./work";
-import Prize from "./Prize";
+import Prize from "./prize";
 import Paper from "./paper";
 import Language from "./language";
 import ItSkills from "./ItSkills";
 import SelfAssessment from "./selfAssessment";
 import JobIntension from "./jobIntension";
+import SelfAddModule from "./selfAddModule";
+
+import {getResume, updateResume} from '@/request';
+
 
 const FillDetails = () => {
 
@@ -33,18 +37,43 @@ const FillDetails = () => {
         width: panelWidth
     };
 
+    const [resumeInfo, setResumeInfo] = useState<any>(); // 简历信息
+    const [isAddModal, setIsAddModal] = useState<boolean>(false); // 自定义模块
+    const [addModuleText, setAddModuleText] = useState<string>(''); // 自定义模块名称
+
+    // 获取简历信息
+    useEffect(() => {
+        // getResume({uuid: '', token: ''}).then(res => {
+        //     setResumeInfo(res);
+        // })
+    }, []);
+
     const panelArray = [
-        {name: '基本资料', element: <BasicInfo />},
-        {name: '教育经历', element: <Education />},
-        {name: '校内经历', element: <School />},
-        {name: '工作（实习）经历', element: <Work />},
-        {name: '获奖情况', element: <Prize />},
-        {name: '论文发表', element: <Paper />},
-        {name: '语言能力', element: <Language />},
-        {name: 'IT技能', element: <ItSkills />},
-        {name: '自我评价', element: <SelfAssessment />},
-        {name: '求职意向', element: <JobIntension />},
+        {name: '基本资料', element: <BasicInfo initialValues={resumeInfo}/>},
+        {name: '教育经历', element: <Education initialValues={resumeInfo}/>},
+        {name: '校内经历', element: <School initialValues={resumeInfo}/>},
+        {name: '工作（实习）经历', element: <Work initialValues={resumeInfo}/>},
+        {name: '获奖情况', element: <Prize initialValues={resumeInfo}/>},
+        {name: '论文发表', element: <Paper initialValues={resumeInfo}/>},
+        {name: '语言能力', element: <Language initialValues={resumeInfo}/>},
+        {name: 'IT技能', element: <ItSkills initialValues={resumeInfo}/>},
+        {name: '自我评价', element: <SelfAssessment initialValues={resumeInfo}/>},
+        {name: '求职意向', element: <JobIntension initialValues={resumeInfo}/>},
     ];
+
+    const showModal = () => {
+        panelArray.push({name: addModuleText, element: <SelfAssessment name={addModuleText} label={addModuleText} initialValues={resumeInfo} />})
+        setIsAddModal(true);
+      };
+    
+      const handleOk = (e: any) => {
+        console.log('e', e);
+        setIsAddModal(false);
+      };
+    
+      const handleCancel = () => {
+        setIsAddModal(false);
+      };
 
     return (
         <div className={styles.detailBox}>
@@ -70,10 +99,16 @@ const FillDetails = () => {
                         </Panel>
                     )})}
                 </Collapse>
-                {/* <div className={styles.addButtonDiv}>
-                    <Button htmlType="button" className={styles.addButton}>添加自定义模块</Button>
-                </div> */}
             </Form.Provider>
+            <div className={styles.addButtonDiv}>
+                <Button htmlType="button" className={styles.addButton} onClick={() => setIsAddModal(true)}>增加自定义模块</Button>
+            </div>
+            <Modal title="增加自定义模块" open={isAddModal} onOk={handleOk} onCancel={handleCancel}>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <p style={{width: 90}}>模块名称</p>
+                    <Input placeholder="请输入模块名称" onChange={(e) => setAddModuleText(e.target.value)}/>
+                </div>
+            </Modal>
         </div>
     )
 }

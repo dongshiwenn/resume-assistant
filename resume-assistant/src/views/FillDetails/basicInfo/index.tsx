@@ -9,24 +9,23 @@ import {
 const { Option } = Select;
 
 import Footer from '../footer';
-import styles from './index.module.scss';
+import styles from '../index.module.scss';
 
-const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
-};
+// const tailLayout = {
+//     wrapperCol: { offset: 8, span: 16 },
+// };
 
 const BasicInfo = (props: any) => {
 
-    const {data: initialValues} = props;
+    const {initialValues} = props;
+
     return(
         <>
         <Form
-          name='basicInfoForm'
-          labelCol={{ span: 4 }}
-          wrapperCol={{ span: 14 }}
-          layout="horizontal"
-          initialValues={initialValues}
-        //   style={{ maxWidth: 1050 }}
+            name='basicInfoForm'
+            layout="horizontal"
+            initialValues={initialValues}
+            className={styles.form}
         >
             <Form.Item label="姓名" name='name'>
                 <Input />
@@ -315,7 +314,7 @@ const BasicInfo = (props: any) => {
             <Form.Item label="期望薪酬" name='expectedSalary'>
                 <Input />
             </Form.Item>
-            <Form.Item {...tailLayout}>
+            <Form.Item className={styles.formFooter}>
                 <Footer />
             </Form.Item>
             
