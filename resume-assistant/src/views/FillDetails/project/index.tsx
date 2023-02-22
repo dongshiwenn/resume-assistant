@@ -9,14 +9,11 @@ import {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
   
-  import styles from './index.module.scss';
   import ProjectForm from './projectForm';
   import addModule from '../addModule';
   import Footer from '../footer';
 
-  const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
-  };
+  import styles from '../index.module.scss';
 
   const Project = (props: any) => {
     const {initialValues} = props;
@@ -24,10 +21,9 @@ import {
       return(
           <>
           <Form
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
+            name='project'
             layout="horizontal"
-            style={{ maxWidth: 600 }}
+            className={styles.form}
             initialValues={initialValues}
           >
             <Form.Item>
@@ -36,7 +32,7 @@ import {
 
             {addModule('添加项目经历', <ProjectForm />, 'addProject')}
 
-            <Form.Item {stylesclassName={styles.formFooterLayout}}>
+            <Form.Item className={styles.formFooter}>
                 <Footer />
             </Form.Item>
           </Form>

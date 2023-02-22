@@ -18,6 +18,7 @@ import {
   import addModule from '../addModule';
   import styles from '../index.module.scss';
   
+  
   const Education = (props: any) => {
 
     const {initialValues} = props;
