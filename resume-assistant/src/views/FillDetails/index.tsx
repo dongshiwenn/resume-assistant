@@ -37,40 +37,44 @@ const FillDetails = () => {
         width: panelWidth
     };
 
+    // let panelArray: any = [];
+
     const [resumeInfo, setResumeInfo] = useState<any>(); // 简历信息
     const [isAddModal, setIsAddModal] = useState<boolean>(false); // 自定义模块
     const [addModuleText, setAddModuleText] = useState<string>(''); // 自定义模块名称
+    const [resumePanel, setResumePanel] = useState<any[]>([]); // 简历模块
 
     // 获取简历信息
     useEffect(() => {
         // getResume({uuid: '', token: ''}).then(res => {
         //     setResumeInfo(res);
         // })
+        const panelArray = [
+            {name: '基本资料', element: <BasicInfo initialValues={resumeInfo}/>},
+            {name: '教育经历', element: <Education initialValues={resumeInfo}/>},
+            {name: '校内经历', element: <School initialValues={resumeInfo}/>},
+            {name: '工作（实习）经历', element: <Work initialValues={resumeInfo}/>},
+            {name: '获奖情况', element: <Prize initialValues={resumeInfo}/>},
+            {name: '论文发表', element: <Paper initialValues={resumeInfo}/>},
+            {name: '语言能力', element: <Language initialValues={resumeInfo}/>},
+            {name: 'IT技能', element: <ItSkills initialValues={resumeInfo}/>},
+            {name: '自我评价', element: <SelfAssessment initialValues={resumeInfo}/>},
+            {name: '求职意向', element: <JobIntension initialValues={resumeInfo}/>},
+        ];
+        setResumePanel(panelArray);
     }, []);
 
-    const panelArray = [
-        {name: '基本资料', element: <BasicInfo initialValues={resumeInfo}/>},
-        {name: '教育经历', element: <Education initialValues={resumeInfo}/>},
-        {name: '校内经历', element: <School initialValues={resumeInfo}/>},
-        {name: '工作（实习）经历', element: <Work initialValues={resumeInfo}/>},
-        {name: '获奖情况', element: <Prize initialValues={resumeInfo}/>},
-        {name: '论文发表', element: <Paper initialValues={resumeInfo}/>},
-        {name: '语言能力', element: <Language initialValues={resumeInfo}/>},
-        {name: 'IT技能', element: <ItSkills initialValues={resumeInfo}/>},
-        {name: '自我评价', element: <SelfAssessment initialValues={resumeInfo}/>},
-        {name: '求职意向', element: <JobIntension initialValues={resumeInfo}/>},
-    ];
 
     const showModal = () => {
-        panelArray.push({name: addModuleText, element: <SelfAssessment name={addModuleText} label={addModuleText} initialValues={resumeInfo} />})
         setIsAddModal(true);
       };
     
       const handleOk = (e: any) => {
-        console.log('e', e);
+        resumePanel?.push({name: addModuleText, element: <SelfAssessment name={addModuleText} label={addModuleText} initialValues={resumeInfo} />})
+        setResumePanel(resumePanel);
         setIsAddModal(false);
       };
-    
+      
       const handleCancel = () => {
         setIsAddModal(false);
       };
@@ -89,7 +93,7 @@ const FillDetails = () => {
                     expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
                     className={styles.collapseBox}
                 >
-                    {panelArray.map((item, index) => {return (
+                    {resumePanel?.map((item: any, index: any) => {return (
                         <Panel
                             header={item.name}
                             key={index}
